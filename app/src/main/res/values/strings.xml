@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BlockText</string>
+    <string name="app_logo">app-logo</string>
+    <string name="pass_label">Password</string>
+    <string name="email_label">Email</string>
+    <string name="login_text_primary">LOGIN</string>
+    <string name="sign_up_primary">Sign Up</string>
+    <string name="resgister_banner">Register as a new User!</string>
+    <string name="signup_name">Name</string>
+    <string name="logout">Log out</string>
+</resources>
