@@ -6,17 +6,25 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Singh\\Downloads\\keystore.jks')
+            storePassword 'Atom_luvs1'
+            keyPassword 'Atom_luvs1'
+        }
+    }
     namespace 'com.anurag.slimchat'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.anurag.slimchat"
+        applicationId 'com.anurag.slimchat'
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName '1.4.1'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationIdSuffix 'alpha'
     }
 
     buildTypes {
