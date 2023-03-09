@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
+
 class SignupActivity : AppCompatActivity() {
 
 
@@ -37,33 +38,45 @@ class SignupActivity : AppCompatActivity() {
             val password = edtPassword.text.toString()
             val name = edtName.text.toString()
 
-            signup(name, email,password)
+            signup(name, email, password)
 
         }
 
     }
 
-    private  fun  signup(name:String, email: String, password: String){
-        //signup functionality
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                   //jump to home_activity
-                    //add user to db
-                    adduserToDatabase(name, email, mAuth.currentUser?.uid!!)
-                    val intent = Intent(this@SignupActivity, MainActivity::class.java)
-                    finish()
-                    startActivity(intent)
-                    //add use to data base
+    private fun signup(name: String?, email: String?, password: String?) {
 
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(this@SignupActivity, "Some Error Occurred", Toast.LENGTH_SHORT).show()
 
-                }
+            //signup functionality
+        if (email != null) {
+            if (password != null) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            //jump to home_activity
+                            //add user to db
+                            if (name != null) {
+                                adduserToDatabase(name, email, mAuth.currentUser?.uid!!)
+                            }
+                            val intent = Intent(this@SignupActivity, MainActivity::class.java)
+                            finish()
+                            startActivity(intent)
+                            //add use to data base
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(
+                                this@SignupActivity,
+                                "Some Error Occurred",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+                    }
             }
-       // fun adduserToDatabase(name: String, email:String, uid: String ){
+        }
+            // fun adduserToDatabase(name: String, email:String, uid: String ){
 
         }
 
@@ -71,9 +84,11 @@ class SignupActivity : AppCompatActivity() {
 
     private fun adduserToDatabase(name: String, email: String, uid: String) {
 
-        var mDbref = FirebaseDatabase.getInstance().reference
+        val mDbref = FirebaseDatabase.getInstance().reference
 
         mDbref.child("user").child(uid).setValue(user(name, email, uid))
     }
+
+
 
 

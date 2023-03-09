@@ -8,4 +8,8 @@
     <string name="resgister_banner">Register as a new User!</string>
     <string name="signup_name">Name</string>
     <string name="logout">Log out</string>
+    <string name="main_channel">main_channel</string>
+    <string name="channel_description">The main notifier channel for messages</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="icon_send">icon for send  button</string>
 </resources>
