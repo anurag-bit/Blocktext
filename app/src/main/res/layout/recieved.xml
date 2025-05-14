@@ -1,22 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <RelativeLayout
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/sender_avatar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="centerCrop"
+        android:src="@android:drawable/ic_menu_myplaces"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/message_bubble_received"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/message_bubble_received"
         android:layout_width="wrap_content"
-        android:background="@drawable/recieved_text_container"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:padding="3dp"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:cardBackgroundColor="?attr/colorSecondaryContainer"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@+id/sender_avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="280dp">
+
         <TextView
             android:id="@+id/txt_recieved"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:text="this is a recieved message"
-            android:textSize="18sp"/> </RelativeLayout>
+            android:maxWidth="280dp"
+            android:padding="12dp"
+            android:text="This is a received message that might be pretty long to test how it appears on multiple lines"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOnSecondaryContainer" />
 
-</RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/message_time_received"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="10:30 AM"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        app:layout_constraintBottom_toBottomOf="@+id/message_bubble_received"
+        app:layout_constraintStart_toEndOf="@+id/message_bubble_received" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

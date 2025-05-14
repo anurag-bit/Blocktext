@@ -1,21 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <RelativeLayout
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
+
+    <TextView
+        android:id="@+id/message_time_sent"
         android:layout_width="wrap_content"
-        android:background="@drawable/btn_background"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="10:30 AM"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        app:layout_constraintBottom_toBottomOf="@+id/message_bubble_sent"
+        app:layout_constraintEnd_toStartOf="@+id/message_bubble_sent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/message_bubble_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="?attr/colorPrimaryContainer"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="280dp">
+
         <TextView
             android:id="@+id/txt_sent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:padding="10dp"
-            android:text="this is a sent message"
-            android:textSize="18sp"/> </RelativeLayout>
+            android:maxWidth="280dp"
+            android:padding="12dp"
+            android:text="This is a sent message that might be pretty long to test how it appears on multiple lines"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOnPrimaryContainer" />
 
-</RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/status_sent"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="4dp"
+        android:src="@android:drawable/ic_menu_send"
+        app:layout_constraintBottom_toBottomOf="@+id/message_bubble_sent"
+        app:layout_constraintStart_toEndOf="@+id/message_bubble_sent"
+        app:tint="?attr/colorPrimary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
